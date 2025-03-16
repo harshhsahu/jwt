@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { makeJWT } from './jwtapi/jwt/decode';
 
-export const runtime = 'edge';
+export const runtime = 'experimental-edge';
 
 export default function Home() {
   const [encodedJWT, setEncodedJWT] = useState('');
