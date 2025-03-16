@@ -16,7 +16,6 @@ export async function makeJWT({ header, payload, secret }: JWTRequest) {
     const secretBytes = new TextEncoder().encode(secret);
     
     // Create signing key
-    const alg = header.alg as jose.KeyLike;
     const signingKey = await new jose.CompactSign(
       new TextEncoder().encode(JSON.stringify(payload))
     )
