@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { makeJWT } from './jwtapi/jwt/decode';
 
 export const runtime = 'edge';
 
@@ -59,20 +60,12 @@ export default function Home() {
       const header = JSON.parse(decodedHeader);
       const payload = JSON.parse(decodedPayload);
 
-      const response = await fetch('/api/jwt', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'generate',
-          header,
-          payload,
-          secret
-        }),
+      const data: any = await makeJWT({ 
+        action: 'generate', 
+        header, 
+        payload, 
+        secret 
       });
-
-      const data = await response.json();
       
       if (data.error) {
         throw new Error(data.error);
@@ -104,9 +97,9 @@ export default function Home() {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (decodedHeader && decodedPayload && secret) {
-        generateToken();
+        void generateToken();  // void operator to handle the Promise
       }
-    }, 500); // Debounce for better performance
+    }, 500);
 
     return () => clearTimeout(timeoutId);
   }, [decodedHeader, decodedPayload, secret]);
