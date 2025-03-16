@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+     "build:pages": "npx @cloudflare/next-on-pages"
   },
   "dependencies": {
     "@types/jsonwebtoken": "^9.0.9",
@@ -17,6 +18,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.11.3",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",

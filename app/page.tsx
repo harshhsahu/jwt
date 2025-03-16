@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 
+export const runtime = 'edge';
+
 export default function Home() {
   const [encodedJWT, setEncodedJWT] = useState('');
   const [decodedHeader, setDecodedHeader] = useState('{\n  "alg": "HS256",\n  "typ": "JWT"\n}');
