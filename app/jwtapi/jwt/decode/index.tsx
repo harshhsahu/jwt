@@ -1,5 +1,7 @@
 import * as jose from 'jose';
 
+export const runtime = 'edge';
+
 interface JWTRequest {
   action: 'generate';
   header: {
