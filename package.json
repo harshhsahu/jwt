@@ -10,13 +10,10 @@
     "build:pages": "npx @cloudflare/next-on-pages"
   },
   "dependencies": {
-    "buffer": "^6.0.3",
-    "crypto-browserify": "^3.12.1",
     "jose": "^6.0.10",
     "next": "15.2.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "stream-browserify": "^3.0.0"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.11.3",
