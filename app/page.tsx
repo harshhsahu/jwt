@@ -132,22 +132,15 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Token Input Section */}
           <div className="bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-700">
-            <h2 className="text-xl font-semibold mb-4 text-white">Token</h2>
+            <h2 className="text-xl font-semibold mb-4 text-white">Encode</h2>
             <div className="space-y-4">
               <div className="relative">
                 <textarea
-                  className="w-full h-96 p-4 border border-gray-700 rounded-lg font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-gray-800 opacity-0 absolute inset-0 z-10"
-                  placeholder="Paste your JWT token here..."
+                  className="w-full h-96 p-4 border border-gray-700 rounded-lg font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-cyan-500 bg-gray-800 text-cyan-400"
+                  placeholder="Your encoded JWT will appear here..."
                   value={encodedJWT}
                   onChange={(e) => handleTokenChange(e.target.value)}
                 />
-                <div className="w-full h-96 p-4 border border-gray-700 rounded-lg text-sm bg-gray-800 overflow-auto">
-                  {encodedJWT ? (
-                    <ColoredToken token={encodedJWT} />
-                  ) : (
-                    <span className="text-gray-500">Paste your JWT token here...</span>
-                  )}
-                </div>
               </div>
             </div>
           </div>
