@@ -6,13 +6,9 @@ const nextConfig: NextConfig = {
   experimental: {
     // appDir is no longer experimental in Next.js 13.4+
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },
-  swcMinify: false,
 };
 
 export default nextConfig;
