@@ -1,10 +1,16 @@
+const daisyui = require("daisyui");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    // ... existing config ...
-    future: {
-      hoverOnlyWhenSupported: true,
-    },
-    experimental: {
-      useJIT: true,
-    }
-  }
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
+  experimental: {
+    useJIT: true,
+  },
+  plugins: [daisyui],
+  daisyui: {
+    themes: ["business", "emerald"],
+    darkTheme: "business",
+  },
+};

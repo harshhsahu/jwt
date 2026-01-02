@@ -38,6 +38,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </Script>
       </head>
       <body
+        data-theme="business"
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {/* Google Tag Manager (noscript) */}
