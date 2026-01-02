@@ -171,18 +171,23 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#0c1424] text-slate-100 pb-16">
       <div className="max-w-6xl mx-auto px-4 lg:px-8 pt-10 space-y-10">
-        <div className="text-center">
+        <header className="text-center space-y-3">
           <h1 className="text-4xl lg:text-5xl font-extrabold">JWT Playground</h1>
-        </div>
+          <p className="text-lg text-slate-300 max-w-3xl mx-auto">
+            Generate, decode, and verify JSON Web Tokens in your browser. Edit headers and payloads, confirm signatures, and get instant validation without leaving your workspace.
+          </p>
+        </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <section aria-label="JWT generator and decoder workspace" className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="bg-[#131c2b] border border-[#1f2a3b] rounded-2xl shadow-xl p-6">
             <h2 className="text-xl font-semibold mb-4 text-slate-50">Encode</h2>
             <textarea
+              id="encoded-jwt"
               className="w-full h-[430px] p-4 border border-[#1c2533] rounded-xl font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-cyan-500/70 bg-[#111927] text-cyan-300"
               placeholder="Your encoded JWT will appear here..."
               value={encodedJWT}
               onChange={(e) => handleTokenChange(e.target.value)}
+              aria-label="Encoded JWT"
             />
             {(error || verifyMessage) && (
               <div className="mt-4 space-y-3">
@@ -206,12 +211,15 @@ export default function Home() {
             <div className="space-y-2">
               <p className="text-xs font-semibold text-slate-400 tracking-wide">HEADER</p>
               <textarea
+                id="jwt-header"
                 className={`w-full h-40 p-4 border rounded-xl font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-red-500/70 bg-[#111927] text-pink-200 ${
                   headerError ? 'border-red-500/70' : 'border-[#1c2533]'
                 }`}
                 value={decodedHeader}
                 onChange={(e) => handleHeaderChange(e.target.value)}
                 placeholder="Enter header JSON..."
+                aria-label="JWT header JSON"
+                aria-invalid={!!headerError}
               />
               {headerError && (
                 <div className="text-red-300 text-xs">{headerError}</div>
@@ -221,10 +229,12 @@ export default function Home() {
             <div className="space-y-2">
               <p className="text-xs font-semibold text-slate-400 tracking-wide">PAYLOAD</p>
               <textarea
+                id="jwt-payload"
                 className="w-full h-56 p-4 border border-[#1c2533] rounded-xl font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-pink-500/70 bg-[#111927] text-pink-300"
                 value={decodedPayload}
                 onChange={(e) => handlePayloadChange(e.target.value)}
                 placeholder="Enter payload JSON..."
+                aria-label="JWT payload JSON"
               />
             </div>
 
@@ -243,10 +253,12 @@ export default function Home() {
                 <div className="pt-2">
                   <input
                     type="text"
+                    id="jwt-secret"
                     className="w-full p-3 border border-[#1c2533] rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/70 bg-[#0d1724] text-blue-200"
                     value={secret}
                     onChange={(e) => handleSecretChange(e.target.value)}
                     placeholder="your-secret-key"
+                    aria-label="Secret used to sign the JWT"
                   />
                 </div>
                 <div className="text-blue-200 pt-2">) secret base64 encoded</div>
@@ -260,7 +272,30 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
+        </section>
+
+        <section className="bg-[#0f1a2c] border border-[#1f2a3b] rounded-2xl shadow-xl p-6 space-y-4">
+          <div className="flex flex-col gap-2">
+            <h2 className="text-xl font-semibold text-slate-50">Why use this JWT generator?</h2>
+            <p className="text-slate-300">
+              This playground runs entirely in your browser, so you can experiment with JSON Web Tokens without exposing secrets. Validate HS256 signatures, inspect headers, and iterate on payload claims in seconds.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-slate-200">
+            <div className="bg-[#111927] border border-[#1c2533] rounded-xl p-4 space-y-2">
+              <h3 className="font-semibold text-slate-50">Live decoding</h3>
+              <p>Paste any JWT to instantly view the header and payload with syntax highlighting.</p>
+            </div>
+            <div className="bg-[#111927] border border-[#1c2533] rounded-xl p-4 space-y-2">
+              <h3 className="font-semibold text-slate-50">Signature checks</h3>
+              <p>Verify HMAC signatures with your own secret to confirm token integrity before shipping.</p>
+            </div>
+            <div className="bg-[#111927] border border-[#1c2533] rounded-xl p-4 space-y-2">
+              <h3 className="font-semibold text-slate-50">Developer-friendly</h3>
+              <p>Pre-built header values, error messaging, and fast re-generation keep your JWT workflow smooth.</p>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
   );
